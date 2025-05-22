@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "866883054876",
+    "project_id": "flickFinder-65f13",
+    "storage_bucket": "flickFinder-65f13.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866883054876:android:9383001feced587e8dded9",
+        "android_client_info": {
+          "package_name": "com.sithija.flickFinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALTGWZA6h0mecgcdJu9xbYLhET5_7jMCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

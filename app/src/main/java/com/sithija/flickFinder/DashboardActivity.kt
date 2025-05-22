@@ -1,0 +1,121 @@
+package com.sithija.flickFinder
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+
+class DashboardActivity : AppCompatActivity() {
+
+    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var mAuth: FirebaseAuth
+
+    private val TAG = "DashboardActivity"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_home)
+
+        Log.d(TAG, "DashboardActivity onCreate started")
+
+        try {
+            setContentView(R.layout.activity_main)
+            Log.d(TAG, "Dashboard layout set")
+
+            // Initialize Firebase Auth
+            mAuth = FirebaseAuth.getInstance()
+
+            // Check if user is logged in
+            if (mAuth.currentUser == null) {
+                Log.e(TAG, "User not authenticated, redirecting to login")
+                navigateToLogin()
+                return
+            }
+
+            Log.d(TAG, "User authenticated: ${mAuth.currentUser?.email}")
+
+            if (savedInstanceState == null) {
+                loadHomeFragment()
+            }
+            // Setup bottom navigation
+            setupBottomNavigation()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error in onCreate: ${e.message}", e)
+            // Handle critical error - possibly redirect to login
+            navigateToLogin()
+        }
+    }
+
+    private fun loadHomeFragment() {
+        try {
+            Log.d(TAG, "Loading Home Fragment")
+
+            // Find the NavHostFragment and navigate to home
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+
+            if (navHostFragment != null) {
+                val navController = navHostFragment.navController
+                // Navigate to home fragment (make sure you have nav_home in your navigation graph)
+                navController.navigate(R.id.nav_home)
+                Log.d(TAG, "Home Fragment loaded via NavController")
+            } else {
+                Log.e(TAG, "NavHostFragment not found")
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error loading Home Fragment: ${e.message}", e)
+        }
+    }
+
+    private fun setupBottomNavigation() {
+        try {
+            bottomNav = findViewById(R.id.bottomNavigation)
+
+            bottomNav.setOnItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.nav_home -> {
+                        // Already on home, do nothing or refresh
+                        Log.d(TAG, "Home navigation selected")
+                        true
+                    }
+                    R.id.nav_movies -> {
+                        // Navigate to movies section
+                        Log.d(TAG, "Movies navigation selected")
+                        Toast.makeText(this, "Movies section coming soon", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.nav_profile -> {
+                        // Navigate to profile section
+                        Log.d(TAG, "Profile navigation selected")
+                        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+                        val navController = navHostFragment.navController
+                        navController.navigate(R.id.userProfileFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            Log.d(TAG, "Bottom navigation setup complete")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error setting up bottom navigation: ${e.message}", e)
+        }
+    }
+
+    private fun navigateToLogin() {
+        try {
+            val intent = Intent(this@DashboardActivity, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error navigating to login: ${e.message}", e)
+            Toast.makeText(this, "Unable to navigate to login screen", Toast.LENGTH_LONG).show()
+            finishAffinity() // Close the app if navigation fails
+        }
+    }
+}

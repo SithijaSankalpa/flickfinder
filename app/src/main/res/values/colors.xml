@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="light_blue">#E3F2FD</color>
+    <color name="red">#F44336</color>
+    <color name="midnight_blue">#121626</color>
+    <color name="dark_blue_grey">#2A2D3E</color>
+    <color name="purple_accent">#6B6EF7</color>
+    <color name="teal_accent">#00BCD4</color>
+    <color name="yellow_rating">#FFEB3B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_grey">#CCFFFFFF</color>
+    <color name="card_background">#2A2D3E</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- System defined colors (keep these for compatibility) -->
+    <color name="purple_200">#6B6EF7</color>
+    <color name="purple_500">#6B6EF7</color>
+    <color name="purple_700">#5154D8</color>
+    <color name="teal_200">#00BCD4</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#FF000000</color>
+</resources>

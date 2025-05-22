@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#191970"
+    tools:context=".RegisterActivity">
+
+    <View
+        android:id="@+id/decorativeShape"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/top_rounded_bg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/circle_bg"
+        android:padding="16dp"
+        android:src="@drawable/ic_person"
+        android:contentDescription="User Registration Logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvRegisterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.05"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Join FlickFinder community"
+        android:textColor="#B0C4DE"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#0C2150"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_marginBottom="6dp"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Full Name"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_marginBottom="6dp"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Email"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_marginBottom="6dp"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Phone Number"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="phone"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_marginBottom="6dp"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Username"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="text"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_marginBottom="6dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#B0C4DE"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Password"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="textPassword"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#B0C4DE"
+                app:boxBackgroundColor="#102557"
+                app:boxStrokeColor="#6495ED"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#B0C4DE"
+                app:hintTextColor="#B0C4DE">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Confirm Password"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:inputType="textPassword"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textColorHint="#B0C4DE" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#4169E1"
+        android:text="REGISTER"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:cornerRadius="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardRegister" />
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Already have an account? Login"
+        android:textColor="#B0C4DE"
+        android:textSize="14sp"
+        android:padding="6dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:indeterminateTint="#4169E1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
