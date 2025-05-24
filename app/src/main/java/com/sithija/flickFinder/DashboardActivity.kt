@@ -75,25 +75,27 @@ class DashboardActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         try {
             bottomNav = findViewById(R.id.bottomNavigation)
-
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
             bottomNav.setOnItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
                         // Already on home, do nothing or refresh
                         Log.d(TAG, "Home navigation selected")
+                        navController.navigate(R.id.homeFragment)
                         true
                     }
                     R.id.nav_movies -> {
                         // Navigate to movies section
                         Log.d(TAG, "Movies navigation selected")
-                        Toast.makeText(this, "Movies section coming soon", Toast.LENGTH_SHORT).show()
+                        navController.navigate(R.id.movieListFragment)
                         true
                     }
+
                     R.id.nav_profile -> {
                         // Navigate to profile section
                         Log.d(TAG, "Profile navigation selected")
-                        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-                        val navController = navHostFragment.navController
+
                         navController.navigate(R.id.userProfileFragment)
                         true
                     }

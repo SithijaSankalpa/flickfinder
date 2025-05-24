@@ -1,21 +1,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
 
     <!-- Your Fragment Container -->
+
+    <!-- Bottom Navigation Container with Custom Styling -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:navGraph="@navigation/nav_graph"
         app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationContainer"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationContainer" />
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/nav_graph"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <!-- Bottom Navigation Container with Custom Styling -->
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomNavigationContainer"
         android:layout_width="match_parent"
@@ -33,16 +37,19 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/bottom_nav_background"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             app:itemBackground="@drawable/bottom_nav_item_background"
             app:itemIconSize="24dp"
+            app:itemActiveIndicatorStyle="@android:color/transparent"
             app:itemIconTint="@drawable/bottom_nav_color_selector"
-            app:itemTextAppearanceActive="@style/BottomNavTextActive"
-            app:itemTextAppearanceInactive="@style/BottomNavTextInactive"
+            app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
+
             app:itemTextColor="@drawable/bottom_nav_color_selector"
+            app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_menu" />
 

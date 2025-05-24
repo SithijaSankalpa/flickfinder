@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.sithija.flickFinder.ui.home.HomeFragment"
+        android:name="com.sithija.flickFinder.ui.movielist.MovieListFragment"
         android:label="Movie List"
         tools:layout="@layout/fragment_movie_list" />
 

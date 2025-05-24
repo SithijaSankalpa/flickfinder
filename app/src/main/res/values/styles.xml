@@ -14,4 +14,9 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="BottomNavigationTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>
