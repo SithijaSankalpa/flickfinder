@@ -10,6 +10,7 @@ import com.sithija.flickFinder.repository.MovieRepository
 import com.sithija.flickFinder.utils.GenreUtils
 import kotlinx.coroutines.launch
 
+
 class MovieListViewModel : ViewModel() {
 
     private val repository = MovieRepository()

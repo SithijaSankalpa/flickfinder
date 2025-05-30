@@ -33,10 +33,10 @@ class RegisterActivity : AppCompatActivity() {
         Log.d(TAG, "RegisterActivity onCreate started")
 
         try {
-            // Initialize Firebase Auth
+
             mAuth = FirebaseAuth.getInstance()
 
-            // Setup UI
+
             setupUI()
             setupClickListeners()
 
@@ -47,11 +47,11 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        // Hide status bar
+
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
         windowInsetsController?.hide(WindowInsetsCompat.Type.statusBars())
 
-        // Initialize UI components
+
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
@@ -63,12 +63,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        // Set click listener for Register button
+
         btnRegister.setOnClickListener {
             registerUser()
         }
 
-        // Set click listener for Login text
+
         tvLogin.setOnClickListener {
             navigateToLogin()
         }
@@ -76,23 +76,23 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerUser() {
         try {
-            // Get input values
+
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
-            // Validate inputs
+
             if (!validateInputs(email, password, confirmPassword)) {
                 return
             }
 
-            // Show progress bar
+
             progressBar.visibility = View.VISIBLE
             btnRegister.isEnabled = false
 
             Log.d(TAG, "Attempting to register with email: $email")
 
-            // Create user with email and password
+
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     progressBar.visibility = View.GONE
@@ -101,10 +101,10 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Log.d(TAG, "Registration successful, user ID: ${mAuth.currentUser?.uid}")
 
-                        // Sign out the user after registration (as per your requirement)
+
                         mAuth.signOut()
 
-                        // Navigate back to login after successful registration
+
                         navigateToLoginAfterRegistration()
                     } else {
                         Log.e(TAG, "Registration failed", task.exception)
@@ -165,7 +165,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun navigateToLogin() {
         try {
             Log.d(TAG, "Navigating back to Login")
-            // Simply finish this activity to go back to login
+
             finish()
         } catch (e: Exception) {
             Log.e(TAG, "Error navigating to login: ${e.message}", e)
@@ -176,7 +176,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun navigateToLoginAfterRegistration() {
         try {
             Log.d(TAG, "Navigating to Login after successful registration")
-            // Create a new intent to login with special flag to indicate successful registration
+
             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             intent.putExtra("REGISTRATION_SUCCESS", true)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -184,14 +184,14 @@ class RegisterActivity : AppCompatActivity() {
             finish() // Close register activity
         } catch (e: Exception) {
             Log.e(TAG, "Error navigating to login after registration: ${e.message}", e)
-            // Fallback - just finish this activity
+
             finish()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        // Clear any error messages when activity starts
+
         etEmail.error = null
         etPassword.error = null
         etConfirmPassword.error = null

@@ -17,7 +17,7 @@ object GenreUtils {
         return genreIds.mapNotNull { genreMap[it] }
     }
 
-    // Helper function to get genre ID from name
+
     fun getGenreId(genreName: String): Int? {
         return genreMap.entries.find { it.value.equals(genreName, ignoreCase = true) }?.key
     }

@@ -26,10 +26,10 @@ class DashboardActivity : AppCompatActivity() {
             setContentView(R.layout.activity_main)
             Log.d(TAG, "Dashboard layout set")
 
-            // Initialize Firebase Auth
+
             mAuth = FirebaseAuth.getInstance()
 
-            // Check if user is logged in
+
             if (mAuth.currentUser == null) {
                 Log.e(TAG, "User not authenticated, redirecting to login")
                 navigateToLogin()
@@ -41,12 +41,12 @@ class DashboardActivity : AppCompatActivity() {
             if (savedInstanceState == null) {
                 loadHomeFragment()
             }
-            // Setup bottom navigation
+
             setupBottomNavigation()
 
         } catch (e: Exception) {
             Log.e(TAG, "Error in onCreate: ${e.message}", e)
-            // Handle critical error - possibly redirect to login
+
             navigateToLogin()
         }
     }
@@ -55,12 +55,12 @@ class DashboardActivity : AppCompatActivity() {
         try {
             Log.d(TAG, "Loading Home Fragment")
 
-            // Find the NavHostFragment and navigate to home
+
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
 
             if (navHostFragment != null) {
                 val navController = navHostFragment.navController
-                // Navigate to home fragment (make sure you have nav_home in your navigation graph)
+
                 navController.navigate(R.id.nav_home)
                 Log.d(TAG, "Home Fragment loaded via NavController")
             } else {
@@ -80,20 +80,20 @@ class DashboardActivity : AppCompatActivity() {
             bottomNav.setOnItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_home -> {
-                        // Already on home, do nothing or refresh
+
                         Log.d(TAG, "Home navigation selected")
                         navController.navigate(R.id.homeFragment)
                         true
                     }
                     R.id.nav_movies -> {
-                        // Navigate to movies section
+
                         Log.d(TAG, "Movies navigation selected")
                         navController.navigate(R.id.movieListFragment)
                         true
                     }
 
                     R.id.nav_profile -> {
-                        // Navigate to profile section
+
                         Log.d(TAG, "Profile navigation selected")
 
                         navController.navigate(R.id.userProfileFragment)

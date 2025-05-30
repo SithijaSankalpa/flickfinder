@@ -3,8 +3,7 @@ package com.sithija.flickFinder
 import android.os.Build
 import android.os.Bundle
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
+
 import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -15,6 +14,8 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.sithija.flickFinder.databinding.ActivityMainBinding
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,28 +27,42 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize binding and set content view ONCE
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         Log.d(TAG, "MainActivity onCreate started")
         try {
             enableEdgeToEdge()
             Log.d(TAG, "Main layout set")
 
-            // Initialize Firebase
             FirebaseApp.initializeApp(this)
             mAuth = FirebaseAuth.getInstance()
             Log.d(TAG, "Firebase initialized in MainActivity")
 
-            // Setup navigation AFTER setting content view
+            if (!isFirestoreInitialized) {
+                try {
+                    val settings = FirebaseFirestoreSettings.Builder()
+                        .setPersistenceEnabled(true)
+                        .build()
+                    FirebaseFirestore.getInstance().firestoreSettings = settings
+                    isFirestoreInitialized = true
+
+                    Log.d(TAG, "Firestore persistence enabled")
+                } catch (e: Exception) {
+                    Log.e(TAG, "Failed to enable Firestore persistence", e)
+                }
+            }
+
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             val navController = navHostFragment.navController
 
-            // Connect BottomNavigationView with NavController
+
             binding.bottomNavigation.setupWithNavController(navController)
 
-            // Setup fullscreen
+
             setupFullscreen()
 
 
@@ -56,6 +71,8 @@ class MainActivity : AppCompatActivity() {
             // Emergency fallback - always go to login on error
             navigateToLogin()
         }
+
+
     }
 
     private fun setupFullscreen() {
@@ -74,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error setting fullscreen: ${e.message}", e)
-            // Non-critical error, continue execution
+
         }
     }
 
@@ -103,4 +120,8 @@ class MainActivity : AppCompatActivity() {
             navigateToLogin() // Fallback to login
         }
     }
+    companion object {
+        private var isFirestoreInitialized = false
+    }
+
 }

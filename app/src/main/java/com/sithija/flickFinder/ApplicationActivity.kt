@@ -12,10 +12,10 @@ class BookMyGameApplication : Application() {
         super.onCreate()
 
         try {
-            // Initialize Firebase
+
             FirebaseApp.initializeApp(this)
 
-            // Enable Firebase database persistence (offline capabilities)
+
             FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
             Log.d(TAG, "Firebase initialized in Application class")

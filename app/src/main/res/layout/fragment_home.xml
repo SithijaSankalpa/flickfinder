@@ -7,7 +7,7 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- Enhanced Search Bar -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/searchBarCardView"
         android:layout_width="0dp"
@@ -58,7 +58,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Welcome Message -->
+
     <TextView
         android:id="@+id/welcomeMessage"
         android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
 
-    <!-- Category Buttons -->
+
     <HorizontalScrollView
         android:id="@+id/categoryScrollView"
         android:layout_width="match_parent"
@@ -148,7 +148,6 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Nested ScrollView for Sections -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -162,7 +161,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Popular Movies Section -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/popularSectionCard"
                 android:layout_width="match_parent"
@@ -205,7 +204,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/popularTitle" />
 
-                    <!-- Enhanced Toggle Button -->
+
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/popularToggleCardView"
                         android:layout_width="wrap_content"
@@ -250,7 +249,6 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Popular Movies RecyclerView -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/popularRecycler"
                         android:layout_width="match_parent"
@@ -265,7 +263,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Upcoming Movies Section -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/upcomingSectionCard"
                 android:layout_width="match_parent"
@@ -308,7 +306,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/upcomingTitle" />
 
-                    <!-- Enhanced Toggle Button -->
+
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/upcomingToggleCardView"
                         android:layout_width="wrap_content"
@@ -353,7 +351,7 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Upcoming Movies RecyclerView -->
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/upcomingRecycler"
                         android:layout_width="match_parent"
@@ -370,5 +368,7 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

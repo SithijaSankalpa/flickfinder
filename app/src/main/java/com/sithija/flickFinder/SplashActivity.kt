@@ -42,24 +42,24 @@ class SplashActivity : AppCompatActivity() {
 
         Log.d(TAG, "SplashActivity onCreate started")
         try {
-            // Setup fullscreen
+
             setupFullscreen()
 
-            // Initialize Firebase
+
             FirebaseApp.initializeApp(this)
             mAuth = FirebaseAuth.getInstance()
             Log.d(TAG, "Firebase initialized in SplashActivity")
 
-            // Set up splash screen timeout
+
             Handler(Looper.getMainLooper()).postDelayed({
-                // Always navigate to login after splash screen
+
 
                 checkUserAuthenticationStatus()
             }, SPLASH_DELAY)
 
         } catch (e: Exception) {
             Log.e(TAG, "Critical error in SplashActivity: ${e.message}", e)
-            // Emergency fallback - always go to login on error
+
             navigateToLogin()
         }
     }
@@ -80,7 +80,7 @@ class SplashActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error setting fullscreen: ${e.message}", e)
-            // Non-critical error, continue execution
+
         }
     }
     private fun checkUserAuthenticationStatus() {
@@ -88,17 +88,17 @@ class SplashActivity : AppCompatActivity() {
             val currentUser = mAuth.currentUser
 
             if (currentUser != null) {
-                // User is already logged in
+
                 Log.d(TAG, "User is already logged in, user ID: ${currentUser.uid}")
                 navigateToDashboard()
             } else {
-                // User is not logged in
+
                 Log.d(TAG, "User is not logged in, redirecting to login")
                 navigateToLogin()
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error checking authentication status: ${e.message}", e)
-            // If there's an error, navigate to login as fallback
+
             navigateToLogin()
         }
     }

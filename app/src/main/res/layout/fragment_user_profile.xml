@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midnight_blue"
@@ -13,7 +12,6 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
@@ -23,21 +21,21 @@
             android:visibility="gone"
             android:indeterminateTint="@color/purple_accent" />
 
-        <!-- Header Section -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:orientation="horizontal"
+            android:gravity="start"
             android:layout_marginBottom="32dp">
 
-            <!-- Profile Image -->
+
             <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                app:cardCornerRadius="60dp"
-                app:cardElevation="8dp"
-                android:layout_marginBottom="16dp">
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp"
+                android:layout_marginEnd="16dp">
 
                 <ImageView
                     android:id="@+id/iv_profile_picture"
@@ -49,34 +47,52 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- User Name -->
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="John Doe"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
 
-            <!-- User Email -->
-            <TextView
-                android:id="@+id/tv_user_email"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="john.doe@example.com"
-                android:textColor="@color/light_grey"
-                android:textSize="16sp" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..."
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View profile"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <!-- Profile Information Section -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lists"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
+            app:cardElevation="4dp"
             android:layout_marginBottom="24dp"
             app:cardBackgroundColor="@color/card_background">
 
@@ -84,76 +100,126 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile Information"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
 
-                <!-- Phone Number -->
                 <LinearLayout
+                    android:id="@+id/ll_watchlist"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="16dp">
+                    android:gravity="center_vertical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="16dp">
 
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_bookmark_outline"
+                        android:layout_marginEnd="16dp"
+                        app:tint="@color/light_grey" />
 
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:text="Watchlist"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-
-
-
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/light_grey" />
 
                 </LinearLayout>
 
-                <!-- Date of Birth -->
-                <LinearLayout
+
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:alpha="0.2"
+                    android:layout_marginHorizontal="16dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_collection"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="16dp">
+                    android:gravity="center_vertical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="16dp">
 
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_movie"
+                        android:layout_marginEnd="16dp"
+                        app:tint="@color/light_grey" />
 
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:text="Collection"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-
-
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/light_grey" />
 
                 </LinearLayout>
 
-                <!-- Location -->
-                <LinearLayout
+
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:alpha="0.2"
+                    android:layout_marginHorizontal="16dp" />
 
 
+                <LinearLayout
+                    android:id="@+id/ll_ratings"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="16dp">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_star"
+                        android:layout_marginEnd="16dp"
+                        app:tint="@color/light_grey" />
+
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:text="Ratings"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/light_grey" />
 
                 </LinearLayout>
 
@@ -161,88 +227,29 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Action Buttons Section -->
-        <LinearLayout
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="24dp">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/red">
 
-            <!-- Edit Profile Button -->
-            <androidx.cardview.widget.CardView
+            <Button
+                android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/purple_accent">
+                android:layout_height="50dp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/transparent"
+                android:drawableStart="@drawable/ic_profile_filled"
+                android:drawableTint="@color/white"
+                android:drawablePadding="20dp"
+                android:gravity="center" />
 
-                <Button
-                    android:id="@+id/btn_edit_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Edit Profile"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:background="@color/transparent"
-                    android:drawableStart="@drawable/ic_edit"
-                    android:drawableTint="@color/white"
-                    android:drawablePadding="12dp"
-                    android:gravity="center" />
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Settings Button -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/teal_accent">
-
-                <Button
-                    android:id="@+id/btn_settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Settings"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:background="@color/transparent"
-                    android:drawableStart="@drawable/ic_settings"
-                    android:drawableTint="@color/white"
-                    android:drawablePadding="12dp"
-                    android:gravity="center" />
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Logout Button -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/red">
-
-                <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Logout"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:background="@color/transparent"
-                    android:drawableStart="@drawable/ic_person"
-                    android:drawableTint="@color/white"
-                    android:drawablePadding="12dp"
-                    android:gravity="center" />
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

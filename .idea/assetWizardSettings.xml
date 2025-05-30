@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../SITHIJA%20SANKALPA/AppData/Local/Android/Sdk/icons/material/materialicons/app_settings_alt/baseline_app_settings_alt_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../SITHIJA%20SANKALPA/AppData/Local/Android/Sdk/icons/material/materialicons/edit/baseline_edit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_settings" />
+                            <entry key="outputName" value="ic_edit" />
                             <entry key="sourceFile" value="C:\Users\SITHIJA SANKALPA\AndroidStudioProjects\BookMyGame" />
                           </map>
                         </option>

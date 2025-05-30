@@ -32,14 +32,14 @@ class LoginActivity : AppCompatActivity() {
         Log.d(TAG, "LoginActivity onCreate started")
 
         try {
-            // Initialize Firebase Auth
+
             mAuth = FirebaseAuth.getInstance()
 
-            // Setup UI
+
             setupUI()
             setupClickListeners()
 
-            // Check if coming from successful registration
+
             if (intent.getBooleanExtra("REGISTRATION_SUCCESS", false)) {
                 Toast.makeText(this, "Registration successful! Please login.", Toast.LENGTH_LONG).show()
             }
@@ -51,11 +51,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        // Hide status bar
+
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
         windowInsetsController?.hide(WindowInsetsCompat.Type.statusBars())
 
-        // Initialize UI components
+
         etUsername = findViewById(R.id.etUsername)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
@@ -66,12 +66,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        // Set click listener for Login button
+
         btnLogin.setOnClickListener {
             loginUser()
         }
 
-        // Set click listener for Register text
+
         tvRegister.setOnClickListener {
             navigateToRegister()
         }
@@ -79,22 +79,22 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser() {
         try {
-            // Get input values
+
             val email = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            // Validate inputs
+
             if (!validateInputs(email, password)) {
                 return
             }
 
-            // Show progress bar
+
             progressBar.visibility = View.VISIBLE
             btnLogin.isEnabled = false
 
             Log.d(TAG, "Attempting to login with email: $email")
 
-            // Sign in with email and password
+
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     progressBar.visibility = View.GONE
@@ -173,7 +173,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // Clear any error messages when activity starts
+
         etUsername.error = null
         etPassword.error = null
     }

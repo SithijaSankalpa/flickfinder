@@ -9,10 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sithija.flickFinder.adapter.MovieListAdapter
 import com.sithija.flickFinder.databinding.FragmentMovieListBinding
 import com.google.android.material.chip.Chip
+import androidx.navigation.fragment.findNavController
+import com.sithija.flickFinder.Model.Movie
+
 
 class MovieListFragment : Fragment() {
 
@@ -42,10 +45,15 @@ class MovieListFragment : Fragment() {
 
     private fun setupRecyclerView() {
         try {
-            adapter = MovieListAdapter(emptyList())
+            adapter = MovieListAdapter(emptyList()) { movie ->
+                navigateToMovieDetails(movie)
+            }
             binding.movieListRecycler.apply {
-                layoutManager = GridLayoutManager(requireContext(), 1) // 2 columns for better movie display
+
+                layoutManager = LinearLayoutManager(requireContext())
                 adapter = this@MovieListFragment.adapter
+
+                setHasFixedSize(true)
             }
             Log.d(TAG, "RecyclerView setup complete")
         } catch (e: Exception) {
@@ -63,6 +71,12 @@ class MovieListFragment : Fragment() {
             viewModel.genres.observe(viewLifecycleOwner) { genreList ->
                 Log.d(TAG, "Genres received: ${genreList.size}")
                 setupChips(genreList)
+            }
+
+
+            viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+
+                Log.d(TAG, "Loading state: $isLoading")
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error observing ViewModel: ${e.message}", e)
@@ -92,7 +106,7 @@ class MovieListFragment : Fragment() {
             val chipGroup = binding.categoryChipGroup
             chipGroup.removeAllViews()
 
-            // Add "All" chip
+
             val allChip = Chip(requireContext()).apply {
                 text = "All"
                 isCheckable = true
@@ -100,7 +114,6 @@ class MovieListFragment : Fragment() {
                 setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         viewModel.showAllMovies()
-                        // Uncheck other chips
                         for (i in 1 until chipGroup.childCount) {
                             (chipGroup.getChildAt(i) as? Chip)?.isChecked = false
                         }
@@ -109,7 +122,7 @@ class MovieListFragment : Fragment() {
             }
             chipGroup.addView(allChip)
 
-            // Add genre chips
+
             for (cat in categories) {
                 val chip = Chip(requireContext()).apply {
                     text = cat
@@ -117,7 +130,6 @@ class MovieListFragment : Fragment() {
                     setOnCheckedChangeListener { _, isChecked ->
                         if (isChecked) {
                             viewModel.filterByGenre(cat)
-                            // Uncheck "All" chip and other genre chips
                             allChip.isChecked = false
                             for (i in 1 until chipGroup.childCount) {
                                 val otherChip = chipGroup.getChildAt(i) as? Chip
@@ -133,6 +145,15 @@ class MovieListFragment : Fragment() {
             Log.d(TAG, "Chips setup complete: ${categories.size + 1} chips")
         } catch (e: Exception) {
             Log.e(TAG, "Error setting up chips: ${e.message}", e)
+        }
+    }
+
+    private fun navigateToMovieDetails(movie: Movie) {
+        try {
+            val action = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(movie)
+            findNavController().navigate(action)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error navigating to movie details: ${e.message}", e)
         }
     }
 

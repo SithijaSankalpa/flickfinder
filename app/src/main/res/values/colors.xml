@@ -13,11 +13,31 @@
     <color name="card_background">#2A2D3E</color>
     <color name="transparent">#00000000</color>
 
-    <!-- System defined colors (keep these for compatibility) -->
+
     <color name="purple_200">#6B6EF7</color>
     <color name="purple_500">#6B6EF7</color>
     <color name="purple_700">#5154D8</color>
     <color name="teal_200">#00BCD4</color>
     <color name="teal_700">#018786</color>
     <color name="black">#FF000000</color>
+
+    <color name="background_dark">#1A1A1A</color>
+
+    <color name="gray_text">#B0B0B0</color>
+    <color name="gray_overlay">#80000000</color>
+    <color name="gray_card">#2A2A2A</color>
+    <color name="gray_chip">#3A3A3A</color>
+    <color name="blue_primary">#4A90E2</color>
+    <color name="orange">#FF6B35</color>
+
+
+    <color name="text_secondary">#78909C</color>
+
+    <color name="rating_background">#4A90E2</color>
+    <color name="rating_star">#FDD835</color>
+
+    <color name="search_bar_background">#34495E</color>
+
+    <color name="chip_background">#455A64</color>
+    <color name="chip_selected">#8B5CF6</color>
 </resources>
