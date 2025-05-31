@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background"
+    android:padding="32dp"
+    android:layout_margin="24dp">
+
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="end"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_close"
+        android:contentDescription="Close"
+        android:layout_marginBottom="16dp" />
+
+
+    <TextView
+        android:id="@+id/tvRatingValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="0.0"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="32dp" />
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:numStars="10"
+        android:rating="0"
+        android:stepSize="0.5"
+        android:isIndicator="false"
+        android:progressTint="@color/yellow_rating"
+        android:progressBackgroundTint="@color/light_grey"
+        android:secondaryProgressTint="@color/yellow_rating"
+        android:layout_marginBottom="40dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8" />
+
+
+    <TextView
+        android:id="@+id/rateNowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Rate now"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="48dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Remove"
+            android:textColor="@color/gray_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_remove_background"
+            android:layout_marginEnd="12dp"
+            android:minWidth="120dp" />
+
+        <Button
+            android:id="@+id/btnApply"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_weight="2"
+            android:text="Apply"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_apply_background"
+            android:layout_marginStart="12dp"
+            android:minWidth="180dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
